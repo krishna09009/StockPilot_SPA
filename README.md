@@ -19,4 +19,6 @@ Typed React application foundation built with Vite.
 
 ## Environment
 
-`VITE_API_URL` is required and is used as the Axios base URL.
+`VITE_API_URL` is required and should contain the API server origin, for
+example `http://localhost:3000`. Authentication requests include credentials
+so the server can issue the refresh token as an HttpOnly cookie.

@@ -11,12 +11,20 @@ export function HomePage() {
         StockPilot gives your team a clear view of inventory and the signals to
         act before stock becomes a problem.
       </p>
-      <Link
-        className="mt-8 inline-block rounded-lg bg-brand-600 px-5 py-3 font-semibold text-white hover:bg-brand-700"
-        to="/sign-in"
-      >
-        Sign in
-      </Link>
+      <div className="mt-8 flex justify-center gap-3">
+        <Link
+          className="inline-block rounded-lg bg-brand-600 px-5 py-3 font-semibold text-white hover:bg-brand-700"
+          to="/register"
+        >
+          Create organization
+        </Link>
+        <Link
+          className="inline-block rounded-lg border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-700 hover:bg-slate-50"
+          to="/sign-in"
+        >
+          Sign in
+        </Link>
+      </div>
     </section>
   );
 }

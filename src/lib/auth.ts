@@ -1,10 +1,12 @@
-const ACCESS_TOKEN_KEY = 'stockpilot.accessToken';
+let accessToken: string | null = null;
 
-export const authStorage = {
-  getToken: (): string | null => localStorage.getItem(ACCESS_TOKEN_KEY),
-  setToken: (token: string): void =>
-    localStorage.setItem(ACCESS_TOKEN_KEY, token),
-  clearToken: (): void => localStorage.removeItem(ACCESS_TOKEN_KEY),
-  isAuthenticated: (): boolean =>
-    Boolean(localStorage.getItem(ACCESS_TOKEN_KEY)),
+export const authSession = {
+  getAccessToken: (): string | null => accessToken,
+  setAccessToken: (token: string): void => {
+    accessToken = token;
+  },
+  clear: (): void => {
+    accessToken = null;
+  },
+  isAuthenticated: (): boolean => Boolean(accessToken),
 };

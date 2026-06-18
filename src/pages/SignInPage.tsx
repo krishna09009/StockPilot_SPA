@@ -1,6 +1,6 @@
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-import { authStorage } from '@/lib/auth';
+import { authSession } from '@/lib/auth';
 
 interface SignInLocationState {
   from?: { pathname?: string };
@@ -11,13 +11,13 @@ export function SignInPage() {
   const navigate = useNavigate();
   const state = location.state as SignInLocationState | null;
 
-  if (authStorage.isAuthenticated()) {
-    return <Navigate replace to="/app" />;
+  if (authSession.isAuthenticated()) {
+    return <Navigate replace to="/app/dashboard" />;
   }
 
   const handleDemoSignIn = (): void => {
-    authStorage.setToken('demo-token');
-    void navigate(state?.from?.pathname ?? '/app', { replace: true });
+    authSession.setAccessToken('demo-token');
+    void navigate(state?.from?.pathname ?? '/app/dashboard', { replace: true });
   };
 
   return (

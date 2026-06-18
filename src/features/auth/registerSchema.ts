@@ -1,0 +1,24 @@
+import { z } from 'zod';
+
+export const registerSchema = z
+  .object({
+    fullName: z.string().trim().min(1, 'Full name is required.'),
+    organizationName: z
+      .string()
+      .trim()
+      .min(1, 'Organization name is required.'),
+    email: z
+      .string()
+      .trim()
+      .min(1, 'Email is required.')
+      .email('Enter a valid email address.')
+      .transform((email) => email.toLowerCase()),
+    password: z.string().min(8, 'Password must be at least 8 characters.'),
+    confirmPassword: z.string().min(1, 'Please confirm your password.'),
+  })
+  .refine((values) => values.password === values.confirmPassword, {
+    message: 'Passwords must match.',
+    path: ['confirmPassword'],
+  });
+
+export type RegisterFormValues = z.infer<typeof registerSchema>;
