@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-50: #eefbf3;
+  --color-brand-500: #22a45d;
+  --color-brand-600: #16834a;
+  --color-brand-700: #12683d;
+}
+
+@layer base {
+  body {
+    @apply m-0 min-w-80 bg-slate-50 font-sans text-slate-900 antialiased;
+  }
+
+  button,
+  a {
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500;
+  }
+}
